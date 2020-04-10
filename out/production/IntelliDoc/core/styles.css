@@ -1,0 +1,35 @@
+.root{
+    -fx-font-style: "Segoe UI";
+    -fx-font-size: 16px;
+}
+
+VBox, HBox{
+    -fx-spacing: 8px;
+    -fx-alignment: center;
+}
+
+VBox{
+    -fx-min-width: 350px;
+}
+
+SplitPane{
+    -fx-padding-right: 16px;
+    -fx-padding-left: 16px;
+}
+
+GridPane {
+    -fx-padding: 16px;
+}
+
+JFXButton{
+    -fx-background-color: aquamarine;
+    -fx-min-width: 128px;
+}
+
+JFXButton:hover{
+    -fx-background-color: rgba(127, 255, 212, 0.7);
+}
+
+#titleText{
+    -fx-font: 72px "Segoe UI";
+}
