@@ -13,6 +13,7 @@ public class MoodManager extends IManager {
     public void onClickYes() {
         Query tmp = new Query("assert(patient_mood(" + currentSolution.get("Mood") + "))");
         System.out.println(tmp.hasSolution() ? "asserted mood" : "failed to assert mood");
+
         query.close();
     }
 }
