@@ -1,6 +1,5 @@
 .root{
-    -fx-font-style: "Segoe UI";
-    -fx-font-size: 16px;
+    -fx-font: 16px "Segoe UI";
 }
 
 VBox, HBox{
@@ -30,6 +29,11 @@ JFXButton:hover{
     -fx-background-color: rgba(127, 255, 212, 0.7);
 }
 
+#painImage, #moodImage{
+    -fx-fit-to-height: 16px;
+    -fx-fit-to-width: 16px;
+}
+
 #titleText{
-    -fx-font: 72px "Segoe UI";
+    -fx-font-size: 72px;
 }

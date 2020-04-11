@@ -1,62 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXSlider?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.Controller">
     <!-- Title Section -->
     <HBox GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
-        <Text fx:id="titleText" text="Intelligent Doctor"/>
+        <Text fx:id="titleText" text="Intelligent Doctor" />
     </HBox>
 
-    <SplitPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+    <HBox GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
         <!-- Left Doctor Panel -->
-        <VBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <VBox>
             <ImageView fx:id="doctorImage" fitHeight="128" fitWidth="128" preserveRatio="true">
                 <image>
-                    <Image url="@../res/img/doctor/doctor_male.png"/>
+                    <Image url="@../res/img/doctor/doctor_male.png" />
                 </image>
             </ImageView>
-            <Text fx:id="gestureText" text="Placeholder gesture"/>
+            <Text fx:id="gestureText" text="Placeholder gesture" />
             <HBox spacing="4">
                 <ImageView fitHeight="16" fitWidth="16" preserveRatio="true">
                     <image>
-                        <Image url="@../res/img/utilities/volume.png"/>
+                        <Image url="@../res/img/utilities/volume.png" />
                     </image>
                 </ImageView>
-                <JFXSlider max="1"/>
+                <JFXSlider max="1" />
             </HBox>
         </VBox>
 
         <!-- Symptoms Track Panel -->
-        <VBox>
-            <GridPane>
-                <Text text="Your Symptoms" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                    <ImageView fx:id="MoodImage"/>
-                    <ImageView fx:id="PainImage"/>
+        <GridPane hgap="4" vgap="4">
+                <HBox alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Text text="Your Symptoms" />
                 </HBox>
-            </GridPane>
-            <JFXListView fx:id="symptomsListView" focusTraversable="false" mouseTransparent="true"/>
-        </VBox>
-    </SplitPane>
+                <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <ImageView fx:id="painImage" preserveRatio="true"/>
+                    <ImageView fx:id="moodImage" preserveRatio="true"/>
+                </HBox>
+            <JFXListView fx:id="symptomsListView" focusTraversable="false" mouseTransparent="true" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+        </GridPane>
+
+    </HBox>
 
     <!-- Question Panel -->
     <HBox GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2">
-        <Text text="Placeholder question"/>
+        <Text fx:id="questionText" text="Placeholder question" />
     </HBox>
 
     <!-- Answer Buttons Panel -->
     <HBox spacing="16" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3">
-        <JFXButton fx:id="buttonYes" text="Yes"/>
-        <JFXButton fx:id="buttonNo" text="No"/>
+        <JFXButton fx:id="buttonYes" onAction="#onClickYes" text="Yes" />
+        <JFXButton fx:id="buttonNo" onAction="#onClickNo" text="No" />
     </HBox>
 
 </GridPane>
