@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -25,6 +26,8 @@ public class Main extends Application {
 
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setMinHeight(bounds.getHeight());
+
+        primaryStage.getIcons().add(new Image("res/img/doctor/doctor_female.png"));
 
         controller = loader.getController();
         controller.beginConversation();
