@@ -1,13 +1,13 @@
-package core;
+package main.manager;
 
+import main.model.PotentialDisease;
 import org.jpl7.Query;
 import org.jpl7.Term;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
-public class DiseaseManager extends IManager {
+public class DiseaseManager extends AbstractManager {
 
     private final int MAX_POTENTIAL_ENTRY = 5;
 
@@ -127,13 +127,16 @@ public class DiseaseManager extends IManager {
         }
     }
 
-    interface Listener {
-        public void onSymptomsYes(String symptom);
+    /**
+     * Internal interface to notify the observer if diagnosis is finished
+     */
+    public interface Listener {
+        void onSymptomsYes(String symptom);
 
-        public void onDiagnosePerfectMatch(String gesture, String message, String disease);
+        void onDiagnosePerfectMatch(String gesture, String message, String disease);
 
-        public void onDiagnosePartialMatch(String gesture, String message, ArrayList<PotentialDisease> diseases);
+        void onDiagnosePartialMatch(String gesture, String message, ArrayList<PotentialDisease> diseases);
 
-        public void onDiagnoseNoMatch(String gesture, String message);
+        void onDiagnoseNoMatch(String gesture, String message);
     }
 }

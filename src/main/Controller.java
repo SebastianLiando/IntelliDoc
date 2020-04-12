@@ -1,5 +1,6 @@
-package core;
+package main;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXSlider;
 import javafx.beans.InvalidationListener;
@@ -21,8 +22,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import main.exception.ConsultException;
+import main.manager.AbstractManager;
+import main.manager.DiseaseManager;
+import main.manager.MoodManager;
+import main.manager.PainManager;
+import main.model.PotentialDisease;
 import org.jpl7.Query;
-import tts.TextSpeechManager;
+import main.tts.TextSpeechManager;
 
 import java.util.ArrayList;
 
@@ -37,14 +44,16 @@ public class Controller implements DiseaseManager.Listener {
     private HBox midHBox;
     @FXML
     private JFXSlider volumeSlider;
+    @FXML
+    private JFXButton buttonYes, buttonNo;
 
     private boolean isPainSet = false;
     private boolean isMoodSet = false;
     private boolean isDiagnosed = false;
-    //    private final String SCRIPT_PATH = "@../pl/sympathetic_doctor.pl";
+    //    private final String SCRIPT_PATH = "../pl/sympathetic_doctor.pl";
     private final String TMP_PATH = "C:/Users/Sebastian/Documents/Prolog/sympathetic_doctor.pl";
 
-    private IManager queryManager;
+    private AbstractManager queryManager;
     private TextSpeechManager speechManager;
 
     public void beginConversation() {
@@ -170,6 +179,7 @@ public class Controller implements DiseaseManager.Listener {
     public void onDiagnosePerfectMatch(String gesture, String message, String disease) {
         isDiagnosed = true;
         displayResponse(gesture, message + disease);
+        disableButtons();
     }
 
     /**
@@ -185,6 +195,7 @@ public class Controller implements DiseaseManager.Listener {
         isDiagnosed = true;
         displayResponse(gesture, message);
         displayChart(diseases);
+        disableButtons();
     }
 
     /**
@@ -198,6 +209,7 @@ public class Controller implements DiseaseManager.Listener {
     public void onDiagnoseNoMatch(String gesture, String message) {
         isDiagnosed = true;
         displayResponse(gesture, message);
+        disableButtons();
     }
 
     /**
@@ -285,5 +297,10 @@ public class Controller implements DiseaseManager.Listener {
                 speechManager.setVolume(volume);
             }
         });
+    }
+
+    private void disableButtons(){
+        buttonYes.setDisable(true);
+        buttonNo.setDisable(true);
     }
 }

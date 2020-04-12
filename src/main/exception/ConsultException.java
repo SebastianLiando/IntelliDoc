@@ -1,4 +1,4 @@
-package core;
+package main.exception;
 
 public class ConsultException extends Exception {
     @Override

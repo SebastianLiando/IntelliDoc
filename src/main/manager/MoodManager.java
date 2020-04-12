@@ -1,8 +1,8 @@
-package core;
+package main.manager;
 
 import org.jpl7.Query;
 
-public class MoodManager extends IManager {
+public class MoodManager extends AbstractManager {
 
     public MoodManager(){
         query = new Query("ask_mood(Mood, Gesture, Question)");

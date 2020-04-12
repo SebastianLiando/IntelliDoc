@@ -1,11 +1,11 @@
-package core;
+package main.manager;
 
 import org.jpl7.Query;
 import org.jpl7.Term;
 
 import java.util.Map;
 
-public abstract class IManager {
+public abstract class AbstractManager {
 
     public static final String DISEASE = "Disease";
     public static final String SYMPTOM = "Symptom";

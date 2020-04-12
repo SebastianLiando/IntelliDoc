@@ -1,8 +1,8 @@
-package core;
+package main.manager;
 
 import org.jpl7.Query;
 
-public class PainManager extends IManager {
+public class PainManager extends AbstractManager {
 
     public PainManager(){
         query = new Query("ask_pain(Pain, Gesture, Question)");

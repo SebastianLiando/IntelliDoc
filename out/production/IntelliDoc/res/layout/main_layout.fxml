@@ -10,11 +10,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.Group?>
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.Controller">
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
     <!-- Title Section -->
-    <HBox GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+    <HBox fx:id="titleHBox" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
         <Text fx:id="titleText" text="Intelligent Doctor"/>
     </HBox>
 
@@ -24,14 +23,14 @@
         <VBox GridPane.vgrow="ALWAYS">
             <ImageView fx:id="doctorImage" fitHeight="200" preserveRatio="true">
                 <image>
-                    <Image url="@../res/img/doctor/doctor.png"/>
+                    <Image url="@../img/doctor/doctor.png"/>
                 </image>
             </ImageView>
             <Text fx:id="gestureText" text="Placeholder gesture"/>
             <HBox spacing="4">
                 <ImageView fx:id="volumeImage" fitHeight="16" fitWidth="16" preserveRatio="true">
                     <image>
-                        <Image url="@../res/img/utilities/volume.png"/>
+                        <Image url="@../img/utilities/volume.png"/>
                     </image>
                 </ImageView>
                 <JFXSlider fx:id="volumeSlider" max="100"/>
@@ -39,7 +38,7 @@
         </VBox>
 
         <!-- Symptoms Track Panel -->
-        <GridPane hgap="4" vgap="4">
+        <GridPane hgap="4" vgap="4" GridPane.vgrow="ALWAYS">
             <HBox alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
                 <Text text="Your Symptoms"/>
             </HBox>
@@ -53,9 +52,9 @@
     </HBox>
 
     <!-- Question Panel -->
-    <VBox GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+    <HBox GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.hgrow="ALWAYS">
         <Text fx:id="questionText" text="Placeholder question"/>
-    </VBox>
+    </HBox>
 
     <!-- Answer Buttons Panel -->
     <HBox spacing="16" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3">

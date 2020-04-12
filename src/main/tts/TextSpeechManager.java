@@ -1,4 +1,4 @@
-package tts;
+package main.tts;
 
 import marytts.LocalMaryInterface;
 import marytts.MaryInterface;
@@ -37,7 +37,6 @@ public class TextSpeechManager {
 
     public void setVolume(double volume){
         float vol = (float) volume / 100;
-        System.out.println(vol);
         configureInterface();
         maryInterface.setAudioEffects("Volume(amount:" + vol + ")");
     }

@@ -1,4 +1,4 @@
-package core;
+package main.model;
 
 public class PotentialDisease {
 
