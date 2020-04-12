@@ -33,6 +33,9 @@ import main.tts.TextSpeechManager;
 
 import java.util.ArrayList;
 
+/**
+ * This class handles events and changes the user interface accordingly.
+ */
 public class Controller implements DiseaseManager.Listener {
     @FXML
     private Text gestureText, questionText;
@@ -56,7 +59,11 @@ public class Controller implements DiseaseManager.Listener {
     private AbstractManager queryManager;
     private TextSpeechManager speechManager;
 
+    /**
+     * the first method that starts the whole application logic
+     */
     public void beginConversation() {
+        //Load prolog script
         try {
             consultScript(TMP_PATH);
         } catch (ConsultException e) {
@@ -64,38 +71,59 @@ public class Controller implements DiseaseManager.Listener {
             e.printStackTrace();
         }
 
+        //Setup UI and text-to-speech feature
         initVolumeSlider();
         speechManager = new TextSpeechManager();
+
+        //Start asking
         askPain();
     }
 
-    private void consultScript(String PATH) throws ConsultException {
+    /**
+     * Consults the prolog script in the given path.
+     *
+     * @param PATH the location of the prolog script file
+     * @throws ConsultException thrown if the prolog script fails to load
+     */
+    private void consultScript(final String PATH) throws ConsultException {
         String queryString = "['" + PATH + "']";
         Query query = new Query(queryString);
         System.out.println("Loaded script: " + query.hasSolution());
     }
 
+    /**
+     * Sets the application to ask for the patient's pain level
+     */
     private void askPain() {
         queryManager = new PainManager();
         displayResponse();
     }
 
+    /**
+     * @see Controller#displayResponse(String, String)
+     */
     private void displayResponse() {
-        displayResponse(queryManager.getGesture(), queryManager.getQuestion());
+        displayResponse(queryManager.getGesture(), queryManager.getMessage());
     }
 
-    private void displayResponse(String gesture, String question) {
+    /**
+     * Updates the user interface according to the gesture and the message.
+     *
+     * @param gesture the gesture the doctor acts
+     * @param message the message the doctor says
+     */
+    private void displayResponse(String gesture, String message) {
         speechManager.stop();
         gestureText.setText("(" + gesture + ") ");
-        questionText.setText(question);
-        speechManager.speak(question);
-        System.out.println("(" + gesture + ") " + question); //Debug
+        questionText.setText(message);
+        speechManager.speak(message);
+        System.out.println("(" + gesture + ") " + message); //Debug
     }
 
     /**
      * Callback function for the "yes" button
      *
-     * @param actionEvent
+     * @param actionEvent the click event
      */
     public void onClickYes(ActionEvent actionEvent) {
 
@@ -279,7 +307,10 @@ public class Controller implements DiseaseManager.Listener {
             }
         });
     }
-
+    /**
+     * Setup the volume slider to react on volume change.
+     * The volume will only change on the next speech upon change.
+     */
     private void initVolumeSlider() {
         volumeSlider.setValue(100);
         volumeSlider.valueProperty().addListener(new InvalidationListener() {
@@ -299,7 +330,10 @@ public class Controller implements DiseaseManager.Listener {
         });
     }
 
-    private void disableButtons(){
+    /**
+     * Disables the yes and no button.
+     */
+    private void disableButtons() {
         buttonYes.setDisable(true);
         buttonNo.setDisable(true);
     }

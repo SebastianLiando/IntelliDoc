@@ -5,6 +5,9 @@ import org.jpl7.Term;
 
 import java.util.Map;
 
+/**
+ * This is the base class of all other managers responsible for questioning the patient.
+ */
 public abstract class AbstractManager {
 
     public static final String DISEASE = "Disease";
@@ -16,33 +19,53 @@ public abstract class AbstractManager {
     public static final String CONTEXT_PARTIAL_MATCH = "outro_partial";
     public static final String CONTEXT_NO_MATCH = "outro_none";
 
+    //The current query the manager do
     protected Query query = null;
+    //The current solution the query has
     protected Map<String, Term> currentSolution = null;
 
+    /**
+     * Gets the gesture to be acted by the doctor
+     * @return the gesture to be acted by the doctor
+     */
     public String getGesture() {
-        return getTerm(GESTURE);
+        return getSolution(GESTURE);
     }
 
-    public String getQuestion() {
-        return getTerm(QUESTION);
+    /**
+     * Gets the message to be said by the doctor
+     * @return the message to be said by the doctor
+     */
+    public String getMessage() {
+        return getSolution(QUESTION);
     }
 
-    protected String getTerm(String key){
+    /**
+     * Gets the solution of a particular variable in prolog.
+     *
+     * @param key the variable name in prolog which value is to be retrieved
+     * @return the value of the variable
+     */
+    protected String getSolution(String key) {
         return cleanString(currentSolution.get(key).toString());
     }
 
     /**
-     * Remove the apostrophes generated from english_of()
-     * @param toClean the string from english_of()
+     * Remove the apostrophes generated from <code>english_of()</code> in prolog
+     *
+     * @param toClean the string to be cleaned
      * @return the cleaned string
      */
-    protected String cleanString(String toClean){
+    protected String cleanString(String toClean) {
         return toClean.replace("'", "");
     }
 
     public abstract void onClickYes();
 
-    public void onClickNo(){
+    /**
+     * The "no" button will get another solution from the query by default.
+     */
+    public void onClickNo() {
         currentSolution = query.nextSolution();
     }
 }

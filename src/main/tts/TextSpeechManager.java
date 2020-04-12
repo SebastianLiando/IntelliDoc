@@ -8,6 +8,9 @@ import marytts.util.data.audio.AudioPlayer;
 
 import javax.sound.sampled.AudioInputStream;
 
+/**
+ * This is a controller class for the text-to-speech feature.
+ */
 public class TextSpeechManager {
     private final String DEFAULT_VOICE = "dfki-prudence-hsmm";
 
@@ -18,8 +21,14 @@ public class TextSpeechManager {
         configureInterface();
     }
 
+    /**
+     * Synthesizes the message and output it as an audio. The audio is played asynchronously.
+     *
+     * @param message the message to speak
+     */
     public void speak(String message) {
         stop();
+        
         try {
             player = new AudioPlayer();
             AudioInputStream audio = maryInterface.generateAudio(message);
@@ -31,17 +40,28 @@ public class TextSpeechManager {
         }
     }
 
-    public void stop(){
+    /**
+     * Stops the thread playing the audio, hence, stopping the speech.
+     */
+    public void stop() {
         if (player != null) player.cancel();
     }
 
-    public void setVolume(double volume){
+    /**
+     * Sets the volume of the audio
+     *
+     * @param volume the desired volume (0-100)
+     */
+    public void setVolume(double volume) {
         float vol = (float) volume / 100;
         configureInterface();
         maryInterface.setAudioEffects("Volume(amount:" + vol + ")");
     }
 
-    private void configureInterface(){
+    /**
+     * This method is used to setup the <code>MaryInterface</code>
+     */
+    private void configureInterface() {
         try {
             maryInterface = new LocalMaryInterface();
             maryInterface.setVoice(DEFAULT_VOICE);
