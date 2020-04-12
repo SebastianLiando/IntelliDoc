@@ -10,6 +10,18 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Images
+*.jpg
+*.gif
+*.png
+*.svg
+*.ico
+
+# Fonts
+*.eot
+*.ttf
+*.woff
+
 # Package Files #
 *.jar
 *.war
