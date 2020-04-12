@@ -2,8 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/res/img/utilities/mute.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tts/TextSpeechManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IntelliDoc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IntelliDoc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/core/main_layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IntelliDoc/core/main_layout.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/calming_gesture/emoticon-square-smiling-face-with-closed-eyes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/calming_gesture/smiley-with-closed-eyes-rounded-square-face.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/normal_gesture/emoticon-face-with-the-mouth-at-one-side-like-a-small-smile-in-a-rounded-square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/normal_gesture/smiley-square-face-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/normal_gesture/smiling-emoticon-square-face-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/polite_gesture/emoticon-square-face-with-a-smile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/polite_gesture/smiling-square-face.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/polite_gesture/student-smiling-emoticon-square-face.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/serious_gesture/nerd-happy-smiling-face-in-rounded-square-face.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/sympathetic_gesture/crying-emoticon-rounded-square-face.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/sympathetic_gesture/sad-emoticon-square-face.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntelliDoc/res/img/sympathetic_gesture/smiling-emoticon-with-raised-eyebrows-and-closed-eyes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/main_layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/main_layout.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +130,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="D:/Code/Java/TalkingDoctor" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/res/lib/jfoenix-8.0.8.jar!/" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -119,7 +138,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -229,7 +248,9 @@
       <workItem from="1586529703137" duration="7493000" />
       <workItem from="1586587330416" duration="667000" />
       <workItem from="1586588019551" duration="129000" />
-      <workItem from="1586588165365" duration="28233000" />
+      <workItem from="1586588165365" duration="28530000" />
+      <workItem from="1586663869629" duration="2882000" />
+      <workItem from="1586671846817" duration="6339000" />
     </task>
     <servers />
   </component>
@@ -254,44 +275,49 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="117" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1586533358770" />
+    <state x="733" y="74" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1586664202541">
+      <screen x="0" y="0" width="1920" height="1020" />
+    </state>
+    <state x="733" y="74" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1920.1020@0.0.1920.1020" timestamp="1586664202541" />
     <state x="438" y="247" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1586533360533">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="247" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1280.680@0.0.1280.680" timestamp="1586533360533" />
-    <state x="663" y="143" key="FileChooserDialogImpl" timestamp="1586591116408">
+    <state x="663" y="143" key="FileChooserDialogImpl" timestamp="1586664437973">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
     <state x="442" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1586536175549" />
-    <state x="663" y="143" key="FileChooserDialogImpl/0.0.1920.1020@0.0.1920.1020" timestamp="1586591116408" />
-    <state width="1852" height="237" key="GridCell.Tab.0.bottom" timestamp="1586623476635">
+    <state x="663" y="143" key="FileChooserDialogImpl/0.0.1920.1020@0.0.1920.1020" timestamp="1586664437973" />
+    <state width="1852" height="237" key="GridCell.Tab.0.bottom" timestamp="1586685920650">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586587827051" />
-    <state width="1852" height="237" key="GridCell.Tab.0.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1586623476635" />
-    <state width="1852" height="237" key="GridCell.Tab.0.center" timestamp="1586623476635">
+    <state width="1852" height="237" key="GridCell.Tab.0.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1586685920650" />
+    <state width="1852" height="237" key="GridCell.Tab.0.center" timestamp="1586685920650">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586587827051" />
-    <state width="1852" height="237" key="GridCell.Tab.0.center/0.0.1920.1020@0.0.1920.1020" timestamp="1586623476635" />
-    <state width="1852" height="237" key="GridCell.Tab.0.left" timestamp="1586623476635">
+    <state width="1852" height="237" key="GridCell.Tab.0.center/0.0.1920.1020@0.0.1920.1020" timestamp="1586685920650" />
+    <state width="1852" height="237" key="GridCell.Tab.0.left" timestamp="1586685920650">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586587827051" />
-    <state width="1852" height="237" key="GridCell.Tab.0.left/0.0.1920.1020@0.0.1920.1020" timestamp="1586623476635" />
-    <state width="1852" height="237" key="GridCell.Tab.0.right" timestamp="1586623476635">
+    <state width="1852" height="237" key="GridCell.Tab.0.left/0.0.1920.1020@0.0.1920.1020" timestamp="1586685920650" />
+    <state width="1852" height="237" key="GridCell.Tab.0.right" timestamp="1586685920650">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586587827051" />
-    <state width="1852" height="237" key="GridCell.Tab.0.right/0.0.1920.1020@0.0.1920.1020" timestamp="1586623476635" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1586536423063">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1852" height="237" key="GridCell.Tab.0.right/0.0.1920.1020@0.0.1920.1020" timestamp="1586685920650" />
+    <state x="53" y="0" width="1718" height="1020" key="SettingsEditor" timestamp="1586671827547">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1586536423063" />
-    <state x="506" y="248" key="com.intellij.ide.util.TipDialog" timestamp="1586588167175">
+    <state x="53" y="0" width="1718" height="1020" key="SettingsEditor/0.0.1920.1020@0.0.1920.1020" timestamp="1586671827547" />
+    <state x="506" y="248" key="com.intellij.ide.util.TipDialog" timestamp="1586671847244">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1586588039023" />
-    <state x="506" y="248" key="com.intellij.ide.util.TipDialog/0.0.1920.1020@0.0.1920.1020" timestamp="1586588167175" />
+    <state x="506" y="248" key="com.intellij.ide.util.TipDialog/0.0.1920.1020@0.0.1920.1020" timestamp="1586671847244" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1586588096312">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

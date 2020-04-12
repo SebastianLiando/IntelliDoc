@@ -1,6 +1,9 @@
 package core;
 
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXSlider;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -19,22 +22,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import org.jpl7.Query;
+import tts.TextSpeechManager;
 
-import javax.tools.Tool;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class Controller implements DiseaseManager.Listener {
     @FXML
     private Text gestureText, questionText;
     @FXML
-    private ImageView moodImage, painImage;
+    private ImageView moodImage, painImage, volumeImage;
     @FXML
     private JFXListView<String> symptomsListView;
     @FXML
     private HBox midHBox;
+    @FXML
+    private JFXSlider volumeSlider;
 
     private boolean isPainSet = false;
     private boolean isMoodSet = false;
@@ -43,6 +45,7 @@ public class Controller implements DiseaseManager.Listener {
     private final String TMP_PATH = "C:/Users/Sebastian/Documents/Prolog/sympathetic_doctor.pl";
 
     private IManager queryManager;
+    private TextSpeechManager speechManager;
 
     public void beginConversation() {
         try {
@@ -52,6 +55,8 @@ public class Controller implements DiseaseManager.Listener {
             e.printStackTrace();
         }
 
+        initVolumeSlider();
+        speechManager = new TextSpeechManager();
         askPain();
     }
 
@@ -71,12 +76,18 @@ public class Controller implements DiseaseManager.Listener {
     }
 
     private void displayResponse(String gesture, String question) {
+        speechManager.stop();
         gestureText.setText("(" + gesture + ") ");
         questionText.setText(question);
-
+        speechManager.speak(question);
         System.out.println("(" + gesture + ") " + question); //Debug
     }
 
+    /**
+     * Callback function for the "yes" button
+     *
+     * @param actionEvent
+     */
     public void onClickYes(ActionEvent actionEvent) {
 
         if (!isDiagnosed) queryManager.onClickYes();
@@ -93,11 +104,19 @@ public class Controller implements DiseaseManager.Listener {
         if (!isDiagnosed) displayResponse();
     }
 
+    /**
+     * Callback function for the "No" button
+     *
+     * @param actionEvent the click event
+     */
     public void onClickNo(ActionEvent actionEvent) {
-        queryManager.onClickNo();
-        displayResponse();
+        if (!isDiagnosed) queryManager.onClickNo();
+        if (!isDiagnosed) displayResponse();
     }
 
+    /**
+     * Loads the mood and pain icon as a feedback to the user.
+     */
     private void loadIcon() {
         if (isPainSet) {
             Query tmp = new Query("patient_pain(X)");
@@ -114,39 +133,78 @@ public class Controller implements DiseaseManager.Listener {
         }
     }
 
+    /**
+     * Loads the image given in the path to the image view with tooltip
+     *
+     * @param path      the image resource path
+     * @param imageView the ImageView to be set the image
+     * @param tooltip   the tooltip message for the image
+     */
     private void loadImage(String path, ImageView imageView, String tooltip) {
         Image image = new Image(path);
         imageView.setImage(image);
         Tooltip.install(imageView, new Tooltip(tooltip));
     }
 
+    /**
+     * Callback function when the patient answers yes for an asked symptom.
+     * The function adds the symptom to the ListView.
+     *
+     * @param symptom the symptoms confirmed
+     */
     @Override
     public void onSymptomsYes(String symptom) {
-        //TODO: add to symptom list
         System.out.println(symptom);
         symptomsListView.getItems().add(symptom);
     }
 
+
+    /**
+     * Callback function when there is a disease which every symptoms match the patient's
+     *
+     * @param gesture the gesture the doctor will act
+     * @param message the message the doctor will speak
+     * @param disease the diagnosed disease
+     */
     @Override
     public void onDiagnosePerfectMatch(String gesture, String message, String disease) {
         isDiagnosed = true;
         displayResponse(gesture, message + disease);
     }
 
+    /**
+     * Callback function when there is no disease that matches the patient's symptoms perfectly, but there are
+     * diseases that match some of the patient's symptoms.
+     *
+     * @param gesture  the gesture the doctor will act
+     * @param message  the message the doctor will speak
+     * @param diseases potential diseases array list
+     */
     @Override
     public void onDiagnosePartialMatch(String gesture, String message, ArrayList<PotentialDisease> diseases) {
         isDiagnosed = true;
         displayResponse(gesture, message);
         displayChart(diseases);
-        //TODO: bar chart
     }
 
+    /**
+     * Callback function when the patient is healthy.
+     * This means the patient does not match any single symptom of all diseases.
+     *
+     * @param gesture the gesture the doctor will act
+     * @param message the message the doctor will speak
+     */
     @Override
     public void onDiagnoseNoMatch(String gesture, String message) {
         isDiagnosed = true;
         displayResponse(gesture, message);
     }
 
+    /**
+     * Used to setup and display the bar chart of potential diseases.
+     *
+     * @param diseases array list of potential diseases
+     */
     private void displayChart(ArrayList<PotentialDisease> diseases) {
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
@@ -174,8 +232,14 @@ public class Controller implements DiseaseManager.Listener {
         potentialBarChart.getYAxis().setOpacity(0);
 
         midHBox.getChildren().add(potentialBarChart);
+
     }
 
+    /**
+     * Used to display the values above the bars in the bar chart.
+     *
+     * @param data the data that holds the node to the value
+     */
     private void displayLabel(XYChart.Data data) {
         final Node node = data.getNode();
         final Text dataText = new Text(data.getYValue() + "");
@@ -200,6 +264,25 @@ public class Controller implements DiseaseManager.Listener {
                                 bounds.getMinY() - dataText.prefHeight(-1) * 0.5
                         )
                 );
+            }
+        });
+    }
+
+    private void initVolumeSlider() {
+        volumeSlider.setValue(100);
+        volumeSlider.valueProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                double volume = volumeSlider.getValue();
+
+                if (volume == 0) {
+                    volumeImage.setImage(new Image("res/img/utilities/mute.png"));
+                    speechManager.stop();
+                } else {
+                    volumeImage.setImage(new Image("res/img/utilities/volume.png"));
+                }
+
+                speechManager.setVolume(volume);
             }
         });
     }

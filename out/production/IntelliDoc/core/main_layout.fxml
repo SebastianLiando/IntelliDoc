@@ -29,12 +29,12 @@
             </ImageView>
             <Text fx:id="gestureText" text="Placeholder gesture"/>
             <HBox spacing="4">
-                <ImageView fitHeight="16" fitWidth="16" preserveRatio="true">
+                <ImageView fx:id="volumeImage" fitHeight="16" fitWidth="16" preserveRatio="true">
                     <image>
                         <Image url="@../res/img/utilities/volume.png"/>
                     </image>
                 </ImageView>
-                <JFXSlider max="100"/>
+                <JFXSlider fx:id="volumeSlider" max="100"/>
             </HBox>
         </VBox>
 

@@ -8,6 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import marytts.LocalMaryInterface;
+import marytts.MaryInterface;
+import marytts.modules.synthesis.Voice;
+import marytts.util.data.audio.AudioPlayer;
+import tts.TextSpeechManager;
+
+import javax.sound.sampled.AudioInputStream;
+import java.util.Locale;
 
 public class Main extends Application {
     private static final int WINDOW_HEIGHT = 650;
@@ -31,6 +39,7 @@ public class Main extends Application {
 
         controller = loader.getController();
         controller.beginConversation();
+
     }
 
     public static void main(String[] args) {
