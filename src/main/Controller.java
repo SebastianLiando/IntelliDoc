@@ -7,7 +7,10 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
@@ -53,8 +56,11 @@ public class Controller implements DiseaseManager.Listener {
     private boolean isPainSet = false;
     private boolean isMoodSet = false;
     private boolean isDiagnosed = false;
-    //    private final String SCRIPT_PATH = "../pl/sympathetic_doctor.pl";
-    private final String TMP_PATH = "C:/Users/Sebastian/Documents/Prolog/sympathetic_doctor.pl";
+
+    private final String PROJECT_DIR = System.getProperty("user.dir").replace("\\", "/");
+    private final String SCRIPT_PATH = PROJECT_DIR + "/src/pl/sympathetic_doctor.pl";
+    private final String KB_PATH = PROJECT_DIR + "/src/pl/kb.pl";
+    private final String UTILS_PATH = PROJECT_DIR + "/src/pl/utils.pl";
 
     private AbstractManager queryManager;
     private TextSpeechManager speechManager;
@@ -62,10 +68,12 @@ public class Controller implements DiseaseManager.Listener {
     /**
      * the first method that starts the whole application logic
      */
-    public void beginConversation() {
+    public void beginConversation() throws InterruptedException {
         //Load prolog script
         try {
-            consultScript(TMP_PATH);
+            consultScript(UTILS_PATH);
+            consultScript(KB_PATH);
+            consultScript(SCRIPT_PATH);
         } catch (ConsultException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
