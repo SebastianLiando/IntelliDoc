@@ -1,3 +1,5 @@
+/* This script is the knowledge base */
+
 /* pain library */
 pain_library([unbearable_pain, lot_of_pain, manageable_pain, mild_pain, no_pain]).
 
