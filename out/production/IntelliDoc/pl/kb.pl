@@ -1,3 +1,5 @@
+/* This script is the knowledge base */
+
 /* pain library */
 pain_library([unbearable_pain, lot_of_pain, manageable_pain, mild_pain, no_pain]).
 
@@ -37,7 +39,7 @@ prefix(polite_gesture, ["Alright, maybe ",
 prefix(sympathetic_gesture, ["Ah, sorry, but do you have ",
 							"Don't worry, how about ",
 							"It's becoming clear, you have ",
-							"I'll make this quick, do you feel "]).
+							"I will make this quick, do you feel "]).
 
 prefix(calming_gesture, ["That's ok, maybe also ", 
 						 "No worries, it's not that bad. Do you also have ",
