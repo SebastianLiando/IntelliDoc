@@ -1,8 +1,9 @@
 # IntelliDoc
-A symptom diagnostic application, powered by JavaFX, JFoenix, MaryTTS, and Prolog. 
+A simple symptom diagnostic application powered by JavaFX, JFoenix, MaryTTS, and Prolog. 
 
 ## User Interface
-<img src="https://github.com/SebastianLiando/IntelliDoc/blob/master/documentation/screenshots/IntelliDoc.png" height="404" width="540">
+<img src="https://github.com/SebastianLiando/IntelliDoc/blob/master/documentation/screenshots/IntelliDoc.png" height="303" width="405">
+<img src="https://github.com/SebastianLiando/IntelliDoc/blob/master/documentation/screenshots/IntelliDoc_partial.png" height="303" width="405">
 
 ## Project Purpose
 This project is created for the course CZ3005: Artificial Intelligence.
